@@ -1,0 +1,50 @@
+ext {
+
+    kotlin_version = "1.4.21"
+
+    def coreKtxVersion = '1.3.2'
+    def appcompatVersion = '1.2.0'
+    def materialComponentsVersion = '1.2.1'
+    def constraintLayoutVersion = '2.0.4'
+    def recyclerViewVersion = '1.1.0'
+    def roomVersion = "2.2.6"
+    def mpAndroidChartVersion = 'v3.1.0'
+    def lifecycleVersion = "2.2.0"
+
+    def daggerVersion = '2.31.2'
+
+    def junitVersion = '4.13.1'
+    def junitAndroidVersion = '1.1.2'
+    def espressoVersion = '3.3.0'
+    def liveDataTestVersion = "2.1.0"
+
+    generalDependencies = [
+            kotlin : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
+            coreKtx : "androidx.core:core-ktx:$coreKtxVersion",
+            appcompat: "androidx.appcompat:appcompat:$appcompatVersion",
+            materialComponents : "com.google.android.material:material:$materialComponentsVersion",
+            constraintLayout : "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion",
+            recyclerView : "androidx.recyclerview:recyclerview:$recyclerViewVersion",
+            room : "androidx.room:room-runtime:$roomVersion",
+            roomCoroutines : "androidx.room:room-ktx:$roomVersion",
+            mpAndroidChart : "com.github.PhilJay:MPAndroidChart:$mpAndroidChartVersion",
+            viewModel : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
+            liveData : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+    ]
+
+    dependencyInjection = [
+            dagger : "com.google.dagger:dagger:$daggerVersion"
+    ]
+
+    annotations = [
+            room : "androidx.room:room-compiler:$roomVersion",
+            dagger : "com.google.dagger:dagger-compiler:$daggerVersion"
+    ]
+
+    testDependencies = [
+            junit : "junit:junit:$junitVersion",
+            junitAndroid : "androidx.test.ext:junit:$junitAndroidVersion",
+            espresso : "androidx.test.espresso:espresso-core:$espressoVersion",
+            liveData : "androidx.arch.core:core-testing:$liveDataTestVersion"
+    ]
+}
