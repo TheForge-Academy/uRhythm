@@ -17,6 +17,7 @@ ext {
     def junitAndroidVersion = '1.1.2'
     def espressoVersion = '3.3.0'
     def liveDataTestVersion = "2.1.0"
+    def assertkVersion = "0.23.1"
 
     generalDependencies = [
             kotlin : "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version",
@@ -27,7 +28,7 @@ ext {
             recyclerView : "androidx.recyclerview:recyclerview:$recyclerViewVersion",
             room : "androidx.room:room-runtime:$roomVersion",
             roomCoroutines : "androidx.room:room-ktx:$roomVersion",
-            mpAndroidChart : "com.github.PhilJay:MPAndroidChart:$mpAndroidChartVersion",
+//            mpAndroidChart : "com.github.PhilJay:MPAndroidChart:$mpAndroidChartVersion",
             viewModel : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
             liveData : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
     ]
@@ -45,6 +46,8 @@ ext {
             junit : "junit:junit:$junitVersion",
             junitAndroid : "androidx.test.ext:junit:$junitAndroidVersion",
             espresso : "androidx.test.espresso:espresso-core:$espressoVersion",
-            liveData : "androidx.arch.core:core-testing:$liveDataTestVersion"
+            liveData : "androidx.arch.core:core-testing:$liveDataTestVersion",
+            room : "androidx.room:room-testing:$roomVersion",
+            assertk : "com.willowtreeapps.assertk:assertk-jvm:$assertkVersion"
     ]
 }
