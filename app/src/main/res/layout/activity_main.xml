@@ -6,6 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            app:menu="@menu/main"
+            app:title="Wednesday"
+            app:titleTextColor="@color/black_75"
+            app:titleTextAppearance="@style/Title"
+            app:subtitle="Jan 1, 2021"
+            app:subtitleTextAppearance="@style/Subtitle"
+            app:subtitleTextColor="@color/black_50"/>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

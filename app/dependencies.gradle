@@ -30,7 +30,8 @@ ext {
             roomCoroutines : "androidx.room:room-ktx:$roomVersion",
 //            mpAndroidChart : "com.github.PhilJay:MPAndroidChart:$mpAndroidChartVersion",
             viewModel : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
-            liveData : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
+            liveData : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion",
+            ativityKtx: "androidx.activity:activity-ktx:$appcompatVersion"
     ]
 
     dependencyInjection = [
