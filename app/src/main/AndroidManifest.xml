@@ -3,6 +3,7 @@
     package="co.thrivemobile.urhythm">
 
     <application
+        android:name=".URhythmApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
