@@ -10,6 +10,7 @@ ext {
     def roomVersion = "2.2.6"
     def mpAndroidChartVersion = 'v3.1.0'
     def lifecycleVersion = "2.2.0"
+    def paging_version = "2.1.2"
 
     def daggerVersion = '2.31.2'
 
@@ -31,7 +32,8 @@ ext {
 //            mpAndroidChart : "com.github.PhilJay:MPAndroidChart:$mpAndroidChartVersion",
             viewModel : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
             liveData : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion",
-            ativityKtx: "androidx.activity:activity-ktx:$appcompatVersion"
+            ativityKtx: "androidx.activity:activity-ktx:$appcompatVersion",
+            pagingKtx: "androidx.paging:paging-runtime-ktx:$paging_version"
     ]
 
     dependencyInjection = [

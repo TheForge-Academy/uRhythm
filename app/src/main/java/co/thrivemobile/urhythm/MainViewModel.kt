@@ -3,7 +3,11 @@ package co.thrivemobile.urhythm
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.paging.PagedList
+import androidx.paging.toLiveData
+import co.thrivemobile.urhythm.horizontalcalendar.HorizontalCalendarFactory
 import java.time.Instant
+import java.time.LocalDate
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 import java.time.format.TextStyle
@@ -11,6 +15,7 @@ import java.util.Locale
 import javax.inject.Inject
 
 class MainViewModel @Inject constructor(
+    private val horizontalCalendarFactory: HorizontalCalendarFactory,
     private val now: () -> Instant
 ) : ViewModel() {
 
@@ -25,4 +30,7 @@ class MainViewModel @Inject constructor(
             date = dateFormatter.format(now)
         )
     }
+
+    val horizontalCalendarSource: LiveData<PagedList<LocalDate>> =
+        horizontalCalendarFactory.toLiveData(30)
 }
