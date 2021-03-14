@@ -7,7 +7,7 @@ import java.time.ZoneId
 
 class HorizontalCalendarSource(
     private val now: () -> Instant
-) : PageKeyedDataSource<Long, LocalDate>() {
+) : PageKeyedDataSource<Long, Day>() {
 
     private val today: LocalDate
         get() {
@@ -16,24 +16,33 @@ class HorizontalCalendarSource(
 
     override fun loadInitial(
         params: LoadInitialParams<Long>,
-        callback: LoadInitialCallback<Long, LocalDate>
+        callback: LoadInitialCallback<Long, Day>
     ) {
-        callback.onResult(mutableListOf(today), -1, 1)
+        val day = Day(true, today)
+        callback.onResult(mutableListOf(day), -1, 1)
     }
 
     override fun loadBefore(
         params: LoadParams<Long>,
-        callback: LoadCallback<Long, LocalDate>
+        callback: LoadCallback<Long, Day>
     ) {
         val previousDay = today.plusDays(params.key)
-        callback.onResult(mutableListOf(previousDay), params.key - 1)
+        val day = Day(
+            isSelected = false,
+            date = previousDay
+        )
+        callback.onResult(mutableListOf(day), params.key - 1)
     }
 
     override fun loadAfter(
         params: LoadParams<Long>,
-        callback: LoadCallback<Long, LocalDate>
+        callback: LoadCallback<Long, Day>
     ) {
-        val previousDay = today.plusDays(params.key)
-        callback.onResult(mutableListOf(previousDay), params.key + 1)
+        val nextDay = today.plusDays(params.key)
+        val day = Day(
+            isSelected = false,
+            date = nextDay
+        )
+        callback.onResult(mutableListOf(day), params.key + 1)
     }
 }

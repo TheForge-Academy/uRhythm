@@ -5,10 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:background="@color/green">
 
     <TextView
         android:id="@+id/day_of_week"
+        style="@style/HorizontalCalendar.Text.SelectedDayOfWeek"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
@@ -17,8 +19,22 @@
         app:layout_constraintBottom_toTopOf="@id/day_of_month"
         tools:text="M"/>
 
+    <ImageView
+        android:id="@+id/selected_background"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        android:src="@drawable/bg_selected_day"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/day_of_month"
+        app:layout_constraintBottom_toBottomOf="@id/day_of_month"
+        tools:visibility="visible"/>
+
     <TextView
         android:id="@+id/day_of_month"
+        style="@style/HorizontalCalendar.Text.SelectedDayOfMonth"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"

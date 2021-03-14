@@ -7,8 +7,8 @@ import javax.inject.Inject
 
 class HorizontalCalendarFactory @Inject constructor(
     private val now: () -> Instant
-) : DataSource.Factory<Long, LocalDate>() {
-    override fun create(): DataSource<Long, LocalDate> {
+) : DataSource.Factory<Long, Day>() {
+    override fun create(): DataSource<Long, Day> {
         return HorizontalCalendarSource(now)
     }
 }

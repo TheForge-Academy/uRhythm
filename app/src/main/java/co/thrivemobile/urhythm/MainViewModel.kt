@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.paging.PagedList
 import androidx.paging.toLiveData
+import co.thrivemobile.urhythm.horizontalcalendar.Day
 import co.thrivemobile.urhythm.horizontalcalendar.HorizontalCalendarFactory
 import java.time.Instant
 import java.time.LocalDate
@@ -31,6 +32,6 @@ class MainViewModel @Inject constructor(
         )
     }
 
-    val horizontalCalendarSource: LiveData<PagedList<LocalDate>> =
+    val horizontalCalendarSource: LiveData<PagedList<Day>> =
         horizontalCalendarFactory.toLiveData(30)
 }

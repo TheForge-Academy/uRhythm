@@ -24,4 +24,30 @@
         <item name="android:fontFamily">@font/barlow_semi_condensed_regular</item>
         <item name="android:textColor">@color/black_50</item>
     </style>
+
+    <style name="HorizontalCalendar" />
+
+    <style name="HorizontalCalendar.Text">
+        <item name="android:textSize">@dimen/horizontalCalendarTextSize</item>
+    </style>
+
+    <style name="HorizontalCalendar.Text.DeselectedDayOfWeek">
+        <item name="android:fontFamily">@font/barlow_semi_condensed_regular</item>
+        <item name="android:textColor">@color/black_50</item>
+    </style>
+
+    <style name="HorizontalCalendar.Text.DeselectedDayOfMonth">
+        <item name="android:fontFamily">@font/barlow_semi_condensed_regular</item>
+        <item name="android:textColor">@color/black_50</item>
+    </style>
+
+    <style name="HorizontalCalendar.Text.SelectedDayOfWeek">
+        <item name="android:fontFamily">@font/barlow_semi_condensed_black</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
+    <style name="HorizontalCalendar.Text.SelectedDayOfMonth">
+        <item name="android:fontFamily">@font/barlow_semi_condensed_black</item>
+        <item name="android:textColor">@color/green</item>
+    </style>
 </resources>
