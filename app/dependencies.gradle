@@ -29,7 +29,7 @@ ext {
             recyclerView : "androidx.recyclerview:recyclerview:$recyclerViewVersion",
             room : "androidx.room:room-runtime:$roomVersion",
             roomCoroutines : "androidx.room:room-ktx:$roomVersion",
-//            mpAndroidChart : "com.github.PhilJay:MPAndroidChart:$mpAndroidChartVersion",
+            mpAndroidChart : "com.github.PhilJay:MPAndroidChart:$mpAndroidChartVersion",
             viewModel : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion",
             liveData : "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion",
             ativityKtx: "androidx.activity:activity-ktx:$appcompatVersion",

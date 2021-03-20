@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import co.thrivemobile.urhythm.R
 import co.thrivemobile.urhythm.databinding.ItemHorizontalCalendarDateBinding
-import java.time.LocalDate
 import java.time.format.TextStyle
 import java.util.Locale
 
@@ -36,27 +35,41 @@ class HorizontalCalendarAdapter
     override fun onBindViewHolder(holder: CalendarDateViewHolder, position: Int) {
         getItem(position)?.let {
             holder.onBind(it)
+
+            holder.itemView.setOnClickListener {
+                onSelect(position)
+            }
+        }
+    }
+
+    fun onSelect(position: Int) {
+        currentList?.let {
+            it.forEach { day -> day.isSelected = false }
+            getItem(position)?.isSelected = true
+            notifyDataSetChanged()
         }
     }
 
     class CalendarDateViewHolder(
         private val binding: ItemHorizontalCalendarDateBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(day: Day) {
+        fun onBind(day: Day) = binding.apply {
+            handleSelection(day)
+
+            dayOfWeek.text = day.date.dayOfWeek.getDisplayName(TextStyle.NARROW, Locale.ROOT)
+            dayOfMonth.text = day.date.dayOfMonth.toString()
+        }
+
+        private fun handleSelection(day: Day) = binding.apply {
             val textAppearance = if (day.isSelected) {
                 R.style.HorizontalCalendar_Text_SelectedDayOfWeek to R.style.HorizontalCalendar_Text_SelectedDayOfMonth
             } else {
                 R.style.HorizontalCalendar_Text_DeselectedDayOfWeek to R.style.HorizontalCalendar_Text_DeselectedDayOfMonth
             }
 
-            binding.apply {
-                dayOfWeek.text = day.date.dayOfWeek.getDisplayName(TextStyle.NARROW, Locale.ROOT)
-                dayOfMonth.text = day.date.dayOfMonth.toString()
-
-                dayOfWeek.setTextAppearance(textAppearance.first)
-                dayOfMonth.setTextAppearance(textAppearance.second)
-                selectedBackground.isVisible = day.isSelected
-            }
+            dayOfWeek.setTextAppearance(textAppearance.first)
+            dayOfMonth.setTextAppearance(textAppearance.second)
+            selectedBackground.isVisible = day.isSelected
         }
     }
 }

@@ -32,6 +32,19 @@ class MainViewModel @Inject constructor(
         )
     }
 
+    private val _goToPosition = MutableLiveData(-1)
+    val goToPosition: LiveData<Int> = _goToPosition
+
     val horizontalCalendarSource: LiveData<PagedList<Day>> =
         horizontalCalendarFactory.toLiveData(30)
+
+    fun resetCalendarPosition() {
+        horizontalCalendarSource.value?.apply {
+            val today = now().atZone(ZoneId.systemDefault()).toLocalDate()
+            val position = binarySearch { day ->
+                day.date.compareTo(today)
+            }
+            _goToPosition.value = position
+        }
+    }
 }

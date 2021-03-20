@@ -2,10 +2,12 @@ package co.thrivemobile.urhythm
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import co.thrivemobile.urhythm.databinding.ActivityMainBinding
+import co.thrivemobile.urhythm.horizontalcalendar.CenterSmoothScroller
 import co.thrivemobile.urhythm.horizontalcalendar.HorizontalCalendarAdapter
 import co.thrivemobile.urhythm.injection.ViewModelFactory
 import javax.inject.Inject
@@ -27,10 +29,15 @@ class MainActivity : AppCompatActivity() {
         (application as URhythmApplication).appComponent.inject(this)
 
         val horizontalCalendarAdapter = HorizontalCalendarAdapter()
+        val centerSmoothScroller = CenterSmoothScroller(this)
 
         binding.horizontalCalendar.apply {
             adapter = horizontalCalendarAdapter
             layoutManager = LinearLayoutManager(this@MainActivity, LinearLayoutManager.HORIZONTAL, false)
+        }
+
+        binding.toolbar.setOnMenuItemClickListener {
+            handleMenuItemClick(it)
         }
 
         mainViewModel.currentDate.observe(this) { currentDay ->
@@ -41,5 +48,25 @@ class MainActivity : AppCompatActivity() {
         mainViewModel.horizontalCalendarSource.observe(this) { dates ->
             horizontalCalendarAdapter.submitList(dates)
         }
+
+        mainViewModel.goToPosition.observe(this) { position ->
+            if (position == -1) {
+                return@observe
+            }
+
+            centerSmoothScroller.targetPosition = position
+            horizontalCalendarAdapter.onSelect(position)
+            binding.horizontalCalendar
+                .layoutManager
+                ?.startSmoothScroll(centerSmoothScroller)
+        }
+    }
+
+    private fun handleMenuItemClick(item: MenuItem) = when (item.itemId) {
+        R.id.today -> {
+            mainViewModel.resetCalendarPosition()
+            true
+        }
+        else -> false
     }
 }
