@@ -1,11 +1,10 @@
 package co.thrivemobile.urhythm
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import co.thrivemobile.urhythm.databinding.ActivityMainBinding
 import co.thrivemobile.urhythm.horizontalcalendar.CenterSmoothScroller
 import co.thrivemobile.urhythm.horizontalcalendar.HorizontalCalendarAdapter
