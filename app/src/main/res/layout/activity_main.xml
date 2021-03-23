@@ -39,4 +39,12 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/app_bar" />
 
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/day_chart"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_calendar" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

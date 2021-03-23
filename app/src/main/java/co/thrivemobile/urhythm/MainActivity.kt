@@ -9,12 +9,16 @@ import co.thrivemobile.urhythm.databinding.ActivityMainBinding
 import co.thrivemobile.urhythm.horizontalcalendar.CenterSmoothScroller
 import co.thrivemobile.urhythm.horizontalcalendar.HorizontalCalendarAdapter
 import co.thrivemobile.urhythm.injection.ViewModelFactory
+import com.github.mikephil.charting.data.LineData
 import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
     @Inject
     lateinit var factory: ViewModelFactory
+
+    @Inject
+    lateinit var chartStyle: SparkLineStyle
 
     private val mainViewModel: MainViewModel by viewModels {
         factory
@@ -39,6 +43,8 @@ class MainActivity : AppCompatActivity() {
             handleMenuItemClick(it)
         }
 
+        chartStyle.styleChart(binding.dayChart)
+
         mainViewModel.currentDate.observe(this) { currentDay ->
             binding.toolbar.title = currentDay.dayOfWeek
             binding.toolbar.subtitle = currentDay.date
@@ -58,6 +64,12 @@ class MainActivity : AppCompatActivity() {
             binding.horizontalCalendar
                 .layoutManager
                 ?.startSmoothScroll(centerSmoothScroller)
+        }
+
+        mainViewModel.lineDataSet.observe(this) { lineDataSet ->
+            chartStyle.styleLineDataSet(lineDataSet)
+            binding.dayChart.data = LineData(lineDataSet)
+            binding.dayChart.invalidate()
         }
     }
 

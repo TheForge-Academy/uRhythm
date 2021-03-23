@@ -12,4 +12,6 @@
     <color name="black_75">#BF3A3C42</color>
     <color name="black_50">#803A3C42</color>
     <color name="off_white">#F7F8E2</color>
+    <color name="off_white_50">#80F7F8E2</color>
+    <color name="transparent">#00000000</color>
 </resources>
