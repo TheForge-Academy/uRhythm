@@ -33,12 +33,20 @@ class HorizontalCalendarAdapter
     }
 
     override fun onBindViewHolder(holder: CalendarDateViewHolder, position: Int) {
-        getItem(position)?.let {
-            holder.onBind(it)
+        getItem(position)?.let { day ->
+            holder.onBind(day)
 
             holder.itemView.setOnClickListener {
-                onSelect(position)
+                onSelect(day)
             }
+        }
+    }
+
+    private fun onSelect(day: Day) {
+        currentList?.binarySearch {
+            it.date.compareTo(day.date)
+        }?.let { currentPosition ->
+            onSelect(currentPosition)
         }
     }
 

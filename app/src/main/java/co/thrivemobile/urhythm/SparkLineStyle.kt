@@ -2,13 +2,20 @@ package co.thrivemobile.urhythm
 
 import android.content.Context
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.XAxis
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.ValueFormatter
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
 import javax.inject.Inject
 
 class SparkLineStyle @Inject constructor(private val context: Context) {
+
+    companion object {
+        private val timeFormatter = DateTimeFormatter.ofPattern("H:mm")
+    }
 
     fun styleChart(lineChart: LineChart) = lineChart.apply {
         axisRight.isEnabled = false
@@ -21,12 +28,16 @@ class SparkLineStyle @Inject constructor(private val context: Context) {
 
         xAxis.apply {
             axisMinimum = 0f
-            axisMaximum = 24f
+            axisMaximum = 23f
             isGranularityEnabled = true
             granularity = 4f
             setDrawGridLines(false)
             setDrawAxisLine(false)
             position = XAxis.XAxisPosition.BOTTOM
+
+            valueFormatter = TimeValueFormatter()
+            typeface = ResourcesCompat.getFont(context, R.font.barlow_semi_condensed_regular)
+            textColor = ContextCompat.getColor(context, R.color.black_75)
         }
 
         setTouchEnabled(true)
@@ -50,6 +61,13 @@ class SparkLineStyle @Inject constructor(private val context: Context) {
 
         setDrawFilled(true)
         fillDrawable = ContextCompat.getDrawable(context, R.drawable.bg_spark_line)
+    }
+
+    private class TimeValueFormatter : ValueFormatter() {
+        override fun getFormattedValue(value: Float): String {
+            val localTime = LocalTime.of(value.toInt(), 0)
+            return timeFormatter.format(localTime)
+        }
     }
 }
 
